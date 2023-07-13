@@ -1,5 +1,5 @@
-const { MessageEmbed, CommandInteraction, Client } = require('discord.js');
-const db = require("../../schema/playlist");
+const { MessageEmbed, CommandInteraction, Client } = require('discord.js')
+const db = require('../../schema/playlist')
 module.exports = {
   name: 'stop',
   description: 'Leaves the voice channel',
@@ -18,24 +18,20 @@ module.exports = {
 
   run: async (client, interaction) => {
     await interaction.deferReply({
-      ephemeral: false,
-    });
-    
+      ephemeral: false
+    })
 
-    const emojiLeave = interaction.client.emoji.leave;
+    const emojiLeave = interaction.client.emoji.leave
 
+    const player = client.manager.players.get(interaction.guild.id)
+    await player.destroy(interaction.guild.id)
 
-   const player = client.manager.players.get(interaction.guild.id); 
-await player.destroy(interaction.guild.id);
-
-await interaction.followUp({ embeds: [{
-      color: '#DDBD86',
-      description: `<:stop:1119915842893783052> Successfully disconnected from ${interaction.member.voice.channel}
+    await interaction.followUp({
+      embeds: [{
+        color: '#DDBD86',
+        description: `<:stop:1119915842893783052> Successfully disconnected from ${interaction.member.voice.channel}
  `
-    }]})
-            
-
-  
-
-  },
-};
+      }]
+    })
+  }
+}

@@ -1,9 +1,9 @@
-const { CommandInteraction, Client, MessageEmbed } = require("discord.js");
-const db1 = require("../../schema/station.js");
-const db2 = require('../../schema/mode.js');
+const { CommandInteraction, Client, MessageEmbed } = require('discord.js')
+const db1 = require('../../schema/station.js')
+const db2 = require('../../schema/mode.js')
 module.exports = {
-  name: "premium",
-  description: "Shows information about Lucy Bot premium",
+  name: 'premium',
+  description: 'Shows information about Lucy Bot premium',
   userPrams: ['MANAGE_GUILD'],
   botPrams: ['EMBED_LINKS'],
   /**
@@ -13,17 +13,17 @@ module.exports = {
 
   run: async (client, interaction, prefix) => {
     await interaction.deferReply({
-    });
+    })
 
-const ress = await db1.findOne({ Guild: interaction.guildId });
-    if (ress && ress.Radio) station = ress.Radio;
+    const ress = await db1.findOne({ Guild: interaction.guildId })
+    if (ress && ress.Radio) station = ress.Radio
 
-const res = await db2.findOne({ Guild: interaction.guildId });
-    if (res && res.mode) mode = res.mode;
-    
-const np = new MessageEmbed()
-  .setAuthor({ name: `${client.user.username} Premium`, iconURL: client.user.displayAvatarURL(), url: `https://discord.gg/WFfjrQxnfH` })
-                    .setDescription(`
+    const res = await db2.findOne({ Guild: interaction.guildId })
+    if (res && res.mode) mode = res.mode
+
+    const np = new MessageEmbed()
+      .setAuthor({ name: `${client.user.username} Premium`, iconURL: client.user.displayAvatarURL(), url: 'https://discord.gg/WFfjrQxnfH' })
+      .setDescription(`
 **<:heart:1121845314341581022> Premium perks:
 <:blank:1120331253569302619><:notes:1119915814733217843> 24/7 Music Playback.
 <:blank:1120331253569302619><:loud:1119915800535511070> Volume controls.
@@ -37,14 +37,10 @@ const np = new MessageEmbed()
 <:info:1119915789030535178> How to get premium?
 <:blank:1120331253569302619><:premium:1119915823964893214>  By becoming a member on our Patreon page.**`)
 
+      .setColor(client.embedColor)
 
-      .setColor(client.embedColor);
-
-
-interaction.followUp({
-  embeds: [np]
-})
-
-    
+    interaction.followUp({
+      embeds: [np]
+    })
   }
 }

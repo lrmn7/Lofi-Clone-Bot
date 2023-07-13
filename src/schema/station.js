@@ -1,9 +1,9 @@
-const { Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose')
 
-let Radio = new Schema({
-    Guild : String,
-    Radio : String, 
-    oldradio: String,
+const Radio = new Schema({
+  Guild: String,
+  Radio: String,
+  oldradio: String
 })
 
-module.exports = model('station', Radio);
+module.exports = model('station', Radio)

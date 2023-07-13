@@ -1,9 +1,9 @@
-const { Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose')
 
-let mode = new Schema({
-    Guild : String,
-    mode : String, 
-    oldmode: String,
+const mode = new Schema({
+  Guild: String,
+  mode: String,
+  oldmode: String
 })
 
-module.exports = model('mode', mode);
+module.exports = model('mode', mode)

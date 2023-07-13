@@ -1,6 +1,6 @@
 module.exports = {
-  name: "shardReconnecting",
+  name: 'shardReconnecting',
   run: async (client, id) => {
-  client.logger.log(`Shard #${id} Reconnecting`, "log");
+    client.logger.log(`Shard #${id} Reconnecting`, 'log')
   }
-};
+}

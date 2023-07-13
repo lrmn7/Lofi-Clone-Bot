@@ -1,6 +1,6 @@
 module.exports = {
-  name: "rateLimit",
+  name: 'rateLimit',
   run: async (client, rateLimitData) => {
-  client.logger.log(rateLimitData, "error");
+    client.logger.log(rateLimitData, 'error')
   }
-};
+}

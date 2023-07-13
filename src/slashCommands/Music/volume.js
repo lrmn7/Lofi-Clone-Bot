@@ -1,4 +1,4 @@
-const { CommandInteraction, Client, MessageEmbed } = require('discord.js');
+const { CommandInteraction, Client, MessageEmbed } = require('discord.js')
 
 module.exports = {
   name: 'volume',
@@ -14,8 +14,8 @@ module.exports = {
       name: 'amount',
       description: 'new volume value to set',
       required: true,
-      type: 'NUMBER',
-    },
+      type: 'NUMBER'
+    }
   ],
 
   /**
@@ -27,19 +27,19 @@ module.exports = {
 
   run: async (client, interaction) => {
     await interaction.deferReply({
-      ephemeral: false,
-    });
+      ephemeral: false
+    })
 
-    const emojivolume = client.emoji.volumehigh;
+    const emojivolume = client.emoji.volumehigh
 
-    const vol = interaction.options.getNumber('amount');
+    const vol = interaction.options.getNumber('amount')
 
-    const player = client.manager.players.get(interaction.guildId);
+    const player = client.manager.players.get(interaction.guildId)
     if (!player.queue.current) {
-      let thing = new MessageEmbed().setColor(client.embedColor).setDescription('There is no Lucy playing.');
-      return interaction.editReply({ embeds: [thing] });
+      const thing = new MessageEmbed().setColor(client.embedColor).setDescription('There is no Lucy playing.')
+      return interaction.editReply({ embeds: [thing] })
     }
-    const volume = Number(vol);
+    const volume = Number(vol)
     if (!volume || volume < 0 || volume > 100) {
       return await interaction
         .editReply({
@@ -48,36 +48,33 @@ module.exports = {
               .setColor(client.embedColor)
               .setDescription(`
               <:error:1121723716494168134> **Invalid volume has been provided!**
-              <:blank:1120331253569302619><:gear:1119915784756531331> Use /volume <0 - 100>`),
-          ],
+              <:blank:1120331253569302619><:gear:1119915784756531331> Use /volume <0 - 100>`)
+          ]
         })
     }
 
-
-    await player.setVolume(volume / 1);
+    await player.setVolume(volume / 1)
     if (volume > player.volume) {
-      let thing = new MessageEmbed()
+      const thing = new MessageEmbed()
         .setColor(client.embedColor)
         .setDescription(`
               <:dvd:1119915776732827778> ** Successfully volume has been changed!**
-              <:blank:1120331253569302619><:loud:1119915800535511070> **Current Volume: ${volume}%**`);
-      return interaction.editReply({ embeds: [thing] });
+              <:blank:1120331253569302619><:loud:1119915800535511070> **Current Volume: ${volume}%**`)
+      return interaction.editReply({ embeds: [thing] })
     } else if (volume < player.volume) {
-      let thing = new MessageEmbed()
+      const thing = new MessageEmbed()
         .setColor(client.embedColor)
         .setDescription(`
               <:dvd:1119915776732827778>  **Successfully volume has been changed!**
-              <:blank:1120331253569302619><:loud:1119915800535511070> **Current Volume: ${volume}%**`);
-      return interaction.editReply({ embeds: [thing] });
+              <:blank:1120331253569302619><:loud:1119915800535511070> **Current Volume: ${volume}%**`)
+      return interaction.editReply({ embeds: [thing] })
     } else {
-      let thing = new MessageEmbed()
+      const thing = new MessageEmbed()
         .setColor(client.embedColor)
         .setDescription(`
               <:dvd:1119915776732827778>  **Successfully volume has been changed!**
-              <:blank:1120331253569302619><:loud:1119915800535511070> **Current Volume: ${volume}%**`);
-      return interaction.editReply({ embeds: [thing] });
+              <:blank:1120331253569302619><:loud:1119915800535511070> **Current Volume: ${volume}%**`)
+      return interaction.editReply({ embeds: [thing] })
     }
-    
-   
-  },
-};
+  }
+}

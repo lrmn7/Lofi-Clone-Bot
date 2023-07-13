@@ -1,6 +1,6 @@
 module.exports = {
-  name: "shardError",
+  name: 'shardError',
   run: async (client, error, id) => {
-  client.logger.log(`Shard #${id} Errored`, "error");
+    client.logger.log(`Shard #${id} Errored`, 'error')
   }
-};
+}

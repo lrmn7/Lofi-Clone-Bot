@@ -1,10 +1,10 @@
-const { Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose')
 
-let Setup = new Schema({
-    Guild : String,
-    Channel: String,
-    Message: String,
-    voiceChannel: String,
+const Setup = new Schema({
+  Guild: String,
+  Channel: String,
+  Message: String,
+  voiceChannel: String
 })
 
-module.exports = model('Setup', Setup);
+module.exports = model('Setup', Setup)
