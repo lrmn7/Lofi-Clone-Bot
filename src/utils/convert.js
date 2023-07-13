@@ -48,13 +48,13 @@ module.exports = {
   },
   convertHmsToMs: function (hms) {
     if (hms.length < 3) {
-      return hms = ((+a[0]) * 1000)
+      return hms = ((Number(a[0])) * 1000)
     } else if (hms.length < 6) {
       const a = hms.split(':')
-      return hms = (((+a[0]) * 60 + (+a[1])) * 1000)
+      return hms = (((Number(a[0])) * 60 + (Number(a[1]))) * 1000)
     } else {
       const a = hms.split(':')
-      return hms = (((+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2])) * 1000)
+      return hms = (((Number(a[0])) * 60 * 60 + (Number(a[1])) * 60 + (Number(a[2]))) * 1000)
     }
   }
 						 }
