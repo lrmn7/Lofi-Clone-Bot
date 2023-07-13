@@ -24,7 +24,7 @@ module.exports = {
     })
     let mode = 'None'
     const ress = await db2.findOne({ Guild: interaction.guildId })
-    if ( ress?.mode) mode = ress.mode
+    if (ress?.mode) mode = ress.mode
 
     const player = client.manager.players.get(interaction.guild.id)
 

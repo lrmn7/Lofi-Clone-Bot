@@ -29,7 +29,7 @@ module.exports = {
 
     if (!message) return
     let disabled = true
-    if ( player?.queue && player.queue.current) disabled = false
+    if (player?.queue && player.queue.current) disabled = false
     const embed1 = new MessageEmbed().setColor(client.embedColor).setTitle('Nothing playing right now in this server!').setDescription(`[Invite](${client.config.links.invite}) - [Support Server](${client.config.links.support})`).setImage(client.config.links.bg)
     const but1 = new MessageButton().setCustomId(`${message.guildId}pause`).setEmoji('⏸️').setStyle('SECONDARY').setDisabled(disabled)
     const but2 = new MessageButton().setCustomId(`${message.guildId}previous`).setEmoji('⏮️').setStyle('SECONDARY').setDisabled(disabled)
