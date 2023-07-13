@@ -133,7 +133,7 @@ module.exports = {
             station = 'default'
           }
 
-          if (ress && ress.Radio) station = ress.Radio
+          if ( ress?.Radio) station = ress.Radio
           let np
 
           if (station == 'default') {
