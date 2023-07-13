@@ -36,7 +36,7 @@ module.exports = {
     const plist = data.Playlist.length
     const tracks = data.Playlist.map(
       (x, i) =>
-        `${+i}. ${x.title && x.uri ? `[${x.title}](${x.uri})` : `${x.title}`}`
+        `${Number(i)}. ${x.title && x.uri ? `[${x.title}](${x.uri})` : `${x.title}`}`
     )
     const pages = lodash.chunk(tracks, 10).map((x) => x.join('\n'))
     let page = 0
