@@ -19,10 +19,10 @@ module.exports = {
     let station
     let mode
     const ress = await db1.findOne({ Guild: interaction.guildId })
-    if ( ress?.Radio) station = ress.Radio
+    if (ress?.Radio) station = ress.Radio
 
     const res = await db2.findOne({ Guild: interaction.guildId })
-    if ( res?.mode) mode = res.mode
+    if (res?.mode) mode = res.mode
 
     if (!ress) {
       station = 'Lucy Radio (Default)'

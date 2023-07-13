@@ -16,10 +16,10 @@ module.exports = {
     })
 
     const ress = await db1.findOne({ Guild: interaction.guildId })
-    if ( ress?.Radio) station = ress.Radio
+    if (ress?.Radio) station = ress.Radio
 
     const res = await db2.findOne({ Guild: interaction.guildId })
-    if ( res?.mode) mode = res.mode
+    if (res?.mode) mode = res.mode
 
     const np = new MessageEmbed()
       .setAuthor({ name: `${client.user.username} Premium`, iconURL: client.user.displayAvatarURL(), url: 'https://discord.gg/WFfjrQxnfH' })

@@ -24,7 +24,7 @@ module.exports = {
     })
     let station = 'Lucy Radio (Default)'
     const ress = await db1.findOne({ Guild: interaction.guildId })
-    if ( ress?.Radio) station = ress.Radio
+    if (ress?.Radio) station = ress.Radio
 
     const thing = new MessageEmbed()
       .setColor(client.embedColor)
