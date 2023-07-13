@@ -1,7 +1,7 @@
-const { Client, VoiceState, MessageEmbed } = require("discord.js")
-const { KazagumoPlayer } = require("kazagumo")
+const { Client, VoiceState, MessageEmbed } = require('discord.js')
+const { KazagumoPlayer } = require('kazagumo')
 
-/** 
+/**
  *
  * @param {Client} client
  * @param {VoiceState} oldState
@@ -11,21 +11,19 @@ const { KazagumoPlayer } = require("kazagumo")
  */
 
 module.exports = {
-    name: "voiceStateUpdate",
-    run: async (client, oldState, newState) => {
+  name: 'voiceStateUpdate',
+  run: async (client, oldState, newState) => {
+    const guildId = newState.guild.id
+    const player = client.manager.players.get(guildId)
+    if (!player) return
 
-        let guildId = newState.guild.id;
-        const player = client.manager.players.get(guildId);
-        if (!player) return;
-        
-        if (!newState.guild.members.cache.get(client.user.id).voice.channelId) {
-            const text = player?.textId;
-            await player.destroy(player.guildId);
-            let emb = new MessageEmbed()
-                .setColor(client.embedColor)
-                .setDescription("I've been Disconnected")
-            client.channels.cache.get(text).send({ embeds: [emb] }).then(msg => { setTimeout(() => { msg.delete() }, 5000) });
-
-        }
+    if (!newState.guild.members.cache.get(client.user.id).voice.channelId) {
+      const text = player?.textId
+      await player.destroy(player.guildId)
+      const emb = new MessageEmbed()
+        .setColor(client.embedColor)
+        .setDescription("I've been Disconnected")
+      client.channels.cache.get(text).send({ embeds: [emb] }).then(msg => { setTimeout(() => { msg.delete() }, 5000) })
     }
+  }
 }

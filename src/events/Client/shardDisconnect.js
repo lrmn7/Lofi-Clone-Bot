@@ -1,6 +1,6 @@
 module.exports = {
-  name: "shardDisconnect",
+  name: 'shardDisconnect',
   run: async (client, event, id) => {
-  client.logger.log(`Shard #${id} Disconnected`, "warn");
+    client.logger.log(`Shard #${id} Disconnected`, 'warn')
   }
-};
+}

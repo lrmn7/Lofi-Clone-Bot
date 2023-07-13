@@ -1,6 +1,6 @@
-const MusicBot = require("./structures/MusicClient.js");
-const client = new MusicBot();
-module.exports = client; 
+const MusicBot = require('./structures/MusicClient.js')
+const client = new MusicBot()
+module.exports = client
 client._loadPlayer()
 client._loadClientEvents()
 client._loadNodeEvents()
@@ -9,25 +9,25 @@ client._loadSlashCommands()
 client.connect()
 
 process.on('unhandledRejection', (reason, p) => {
-    console.log(reason, p);
-});
+  console.log(reason, p)
+})
 
 process.on('uncaughtException', (err, origin) => {
-    console.log(err, origin);
-});
+  console.log(err, origin)
+})
 
 process.on('uncaughtExceptionMonitor', (err, origin) => {
-    console.log(err, origin);
-});
+  console.log(err, origin)
+})
 
 process.on('multipleResolves', (type, promise, reason) => {
-    console.log(type, promise, reason);
-});
+  console.log(type, promise, reason)
+})
 
 require('node:http')
   .createServer((_, res) =>
     res.end(
-      `Developed by L RMN`,
-    ),
+      'Developed by L RMN'
+    )
   )
-  .listen(8080);
+  .listen(8080)

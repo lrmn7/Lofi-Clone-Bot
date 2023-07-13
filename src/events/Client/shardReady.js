@@ -1,7 +1,6 @@
-
 module.exports = {
-  name: "shardReady",
+  name: 'shardReady',
   run: async (client, id) => {
-  client.logger.log(`Shard #${id} Ready`, "ready");
+    client.logger.log(`Shard #${id} Ready`, 'ready')
   }
-};
+}

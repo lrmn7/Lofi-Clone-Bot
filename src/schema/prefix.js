@@ -1,9 +1,9 @@
-const { Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose')
 
-let Prefix = new Schema({
-    Guild : String,
-    Prefix : String, 
-    oldPrefix: String,
+const Prefix = new Schema({
+  Guild: String,
+  Prefix: String,
+  oldPrefix: String
 })
 
-module.exports = model('prefix', Prefix);
+module.exports = model('prefix', Prefix)

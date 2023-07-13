@@ -1,9 +1,9 @@
-const { CommandInteraction, Client, MessageEmbed } = require("discord.js");
-const db1 = require("../../schema/station.js");
-const db2 = require('../../schema/mode.js');
+const { CommandInteraction, Client, MessageEmbed } = require('discord.js')
+const db1 = require('../../schema/station.js')
+const db2 = require('../../schema/mode.js')
 module.exports = {
-  name: "settings",
-  description: "Shows the server settings",
+  name: 'settings',
+  description: 'Shows the server settings',
   userPrams: ['MANAGE_GUILD'],
   botPrams: ['EMBED_LINKS'],
   dj: true,
@@ -14,52 +14,46 @@ module.exports = {
 
   run: async (client, interaction, prefix) => {
     await interaction.deferReply({
-    });
+    })
 
+    let station
+    let mode
+    const ress = await db1.findOne({ Guild: interaction.guildId })
+    if (ress && ress.Radio) station = ress.Radio
 
-    let station;
-    let mode;
-const ress = await db1.findOne({ Guild: interaction.guildId });
-    if (ress && ress.Radio) station = ress.Radio;
+    const res = await db2.findOne({ Guild: interaction.guildId })
+    if (res && res.mode) mode = res.mode
 
-const res = await db2.findOne({ Guild: interaction.guildId });
-    if (res && res.mode) mode = res.mode;
-
-
-if(!ress){
-  station = "Lucy Radio (Default)"
-}
-
-    if(!res){
-      mode = "None"
+    if (!ress) {
+      station = 'Lucy Radio (Default)'
     }
-    
-    
-const np = new MessageEmbed()
-  .setAuthor({ name: `${client.user.username} Setting`, iconURL: client.user.displayAvatarURL(), url: `https://discord.gg/WFfjrQxnfH` })
-//                     .setDescription(`
-// <:notes:1119915814733217843> **Playing Song:**
-// <:blank:1120331253569302619><:next:1119915811415539722> **${song.title}**`)
+
+    if (!res) {
+      mode = 'None'
+    }
+
+    const np = new MessageEmbed()
+      .setAuthor({ name: `${client.user.username} Setting`, iconURL: client.user.displayAvatarURL(), url: 'https://discord.gg/WFfjrQxnfH' })
+    //                     .setDescription(`
+    // <:notes:1119915814733217843> **Playing Song:**
+    // <:blank:1120331253569302619><:next:1119915811415539722> **${song.title}**`)
 
       .addFields([
         {
-          name: `<:radio:1119915830344437790> Radio Station`,
+          name: '<:radio:1119915830344437790> Radio Station',
           value: `${station}`,
-          inline: true,
+          inline: true
         },
         {
-          name: `<:mode:1119915805056966717> Radio Mode`,
+          name: '<:mode:1119915805056966717> Radio Mode',
           value: `${mode}`,
-          inline: true,
-        },
+          inline: true
+        }
       ])
-      .setColor(client.embedColor);
+      .setColor(client.embedColor)
 
-
-interaction.followUp({
-  embeds: [np]
-})
-
-    
+    interaction.followUp({
+      embeds: [np]
+    })
   }
 }
