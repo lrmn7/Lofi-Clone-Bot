@@ -22,7 +22,7 @@ module.exports = {
 
     const data = await db.findOne({ Guild: guild.id })
 
-    if (data && data.Channel) {
+    if ( data?.Channel) {
       const textChannel = guild.channels.cache.get(data.Channel)
       const id = data.Message
       if (channel === textChannel) {
