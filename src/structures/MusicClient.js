@@ -32,7 +32,7 @@ class MusicBot extends Client {
     this.emoji = require('../utils/emoji.json')
     this.anime = require('../songs/anime.json')
     if (!this.token) this.token = this.config.token
-    this.manager
+
     this._connectMongodb()
   }
 
